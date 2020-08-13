@@ -5,7 +5,8 @@ services:
     image: php:7.4-apache
     volumes:
       - ./php.ini:/usr/local/etc/php/php.ini
-      - ./html:/var/www/html
+      # - ./html:/var/www/html
+      - ./:/var/www
     ports:
       - 8080:80
   mysql:
