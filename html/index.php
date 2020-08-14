@@ -7,33 +7,66 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-<h1>ハローワールド</h1>
 <?php
-// echo  __DIR__ . "<br />";
-// echo './csv/AMU_PAY_SHOP_LIST.csv';
-// $row = 1;
-// $filepath = "../csv/AMU_PAY_SHOP_LIST.csv";
-// $file = file_get_contents($filepath);
-// $lines = str_getcsv($file, "\r\n");
-// foreach ($lines as $line) {
-//     $records[] = str_getcsv($line);
-// }
+$PREFCTUR_FILEPATH = "../csv/prefecture_list.csv";
+$SHOP_FILEPATH = "../csv/shop_list.csv";
 
-// var_dump ($records);
-// var_dump ($file);
+// csvファイルを読み込み
 
-$row = 1;
-// ファイルが存在しているかチェックする
-if (($handle = fopen("../csv/AMU_PAY_SHOP_LIST.csv", "r")) !== FALSE) {
-    // 1行ずつfgetcsv()関数を使って読み込む
-    while (($data = fgetcsv($handle))) {
-        echo "${row}行目\n";
-        $row++;
-        foreach ($data as $value) {
-            echo "${value}\n";
+$prefecture_file = file_get_contents($PREFCTUR_FILEPATH);
+$shop_file = file_get_contents($SHOP_FILEPATH);
+$prefecture_lines = str_getcsv($prefecture_file, "\r\n");
+$shop_lines = str_getcsv($shop_file, "\r\n");
+
+// csvファイルを配列データに置き換える
+
+foreach ($prefecture_lines as $line) {
+    $prefecture_records[] = preg_split("/,/", $line);
+}
+foreach ($shop_lines as $line) {
+    $shop_records[] = preg_split("/,/", $line);
+}
+
+// 地区ごとに振り分ける
+function area_array($prefecture_records, $area_name) {
+    foreach ($prefecture_records as $record) {
+        if ($record[2] == $area_name) {
+            $area[] = $record;
         }
     }
-    fclose($handle);
+    return $area;
+}
+
+// 地区ごとに配列を用意
+
+$HOKAIDO_TOHOKU_records = area_array($prefecture_records, "北海道・東北");
+$KANTO_records = area_array($prefecture_records, "関東");
+$HOKURIKU_KOUSINETU_records = area_array($prefecture_records, "北陸・甲信越");
+$TOKAI_records = area_array($prefecture_records, "東海");
+$KINKI_records = area_array($prefecture_records, "近畿");
+$CHUGOKU_records = area_array($prefecture_records, "中国");
+$SHIKOKU_records = area_array($prefecture_records, "四国");
+$KYUSYU_OKINAWA_records = area_array($prefecture_records, "九州・沖縄");
+
+
+// 配列の中身を出力
+
+foreach ($prefecture_records as $record) {
+    echo $record[0] . "<br/>";
+    echo $record[1] . "<br/>";
+    echo $record[2] . "<br/>";
+    echo "<br/>";
+}
+
+foreach ($shop_records as $record) {
+    echo $record[1] . "<br/>";
+    echo $record[2] . "<br/>";
+    echo $record[3] . "<br/>";
+    echo $record[4] . "<br/>";
+    echo $record[5] . "<br/>";
+    echo $record[6] . "<br/>";
+    echo $record[7] . "<br/>";
+    echo "<br/>";
 }
 
 ?>
