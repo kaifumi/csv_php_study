@@ -24,8 +24,8 @@ function area_array($prefecture_records, $area_name) {
 
 // 地区ごとに配列を用意
 
-$area = ['北海道・東北','関東', '北陸・甲信越', '東海', '近畿', '中国', '四国', '九州・沖縄'];
-foreach($area as $v) {
+$areas = ['北海道・東北','関東', '北陸・甲信越', '東海', '近畿', '中国', '四国', '九州・沖縄'];
+foreach($areas as $v) {
     $per_district_records[] = area_array($prefecture_records,$v);
 }
 
