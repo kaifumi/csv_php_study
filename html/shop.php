@@ -13,20 +13,24 @@ foreach ($shop_lines as $line) {
 }
 
 // 都道府県ごとに振り分ける
-function area_array($prefecture_records, $area_name) {
-    foreach ($prefecture_records as $record) {
-        if ($record[2] == $area_name) {
+function shop_prefecture_array($shop_records, $district) {
+    foreach ($shop_records as $record) {
+        // echo $record[0] . "<br/>";
+        // echo $record[1] . "<br/>";
+        if (array_search($record[1], $district)) {
             $area[] = $record;
         }
     }
     return $area;
 }
 
-// 店舗ごとに配列を用意
+// 地区ごとの店舗配列を用意
 
-$area = ['北海道・東北','関東', '北陸・甲信越', '東海', '近畿', '中国', '四国', '九州・沖縄'];
+$area = [range(0, 7), range(8, 14), range(15, 20), range(21, 23), range(24, 30), range(31, 35), range(36, 39), range(40, 47)];
 foreach($area as $v) {
-    $per_district_records[] = area_array($prefecture_records,$v);
+    $per_district_shops[] = shop_prefecture_array($shop_records,$v);
 }
+
+
 
 ?>
