@@ -15,8 +15,6 @@ foreach ($shop_lines as $line) {
 // 都道府県ごとに振り分ける
 function shop_prefecture_array($shop_records, $district) {
     foreach ($shop_records as $record) {
-        // echo $record[0] . "<br/>";
-        // echo $record[1] . "<br/>";
         if (array_search($record[1], $district)) {
             $area[] = $record;
         }
@@ -26,11 +24,9 @@ function shop_prefecture_array($shop_records, $district) {
 
 // 地区ごとの店舗配列を用意
 
-$area = [range(0, 7), range(8, 14), range(15, 20), range(21, 23), range(24, 30), range(31, 35), range(36, 39), range(40, 47)];
+$area = [range(0, 7), range(7, 14), range(14, 20), range(20, 24), range(24, 30), range(30, 35), range(35, 39), range(39, 47)];
 foreach($area as $v) {
     $per_district_shops[] = shop_prefecture_array($shop_records,$v);
 }
-
-
 
 ?>
