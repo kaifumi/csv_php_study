@@ -6,28 +6,31 @@
     <title>shop_list</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/style.css">
+    <script type="text/javascript" src="js/shop_list.js"></script>
 </head>
 <body>
-  <div class="area">
+  <div class="main">
   <?php
     include('prefecture.php');
     include('shop_info.php');
 
     $number = 1;
     $i = 1;
-    $prefecture_num = range(0, 47);
+    $prefecture_num = range(0, 47); ?>
 
-    // 地域区分ごとに表示
-    foreach($areas as $area) { ?>
-      <input type="radio" name="tab_name" id="tab<?= $number; ?>" <?php if ($number == 1) {echo "checked";} ?> >
-      <label class="tab_class" for="tab<?= $number; ?>"><?= $area ?></label>
-      <div class="content_class">
-        <a href=""></a>
-        <?
-          // 都道府県ごとのリンクを生成
-          foreach($per_district_records[$number-1] as $record) { ?>
+    <ul class="tab-group">
+        <? foreach($areas as $v) { ?>
+          <li class="tab tab<?= array_search($v, $areas); if (array_search($v, $areas) == 0) {echo " active";} ?>"><?= $v; ?></li>
+        <? } ?>
+    </ul>
+    <!-- 地域区分ごとに表示 -->
+    <? foreach($areas as $area) { ?>
+      <div class="content content<?= array_search($area, $areas); if (array_search($area, $areas) == 0) {echo " show";} ?>">
+
+        <!-- 都道府県ごとのリンクを生成 -->
+        <? foreach($per_district_records[$number-1] as $record) { ?>
             <a href="#<?= $record[1]; ?>"><?= $record[0]; ?></a>
-          <? }
+        <? }
 
           // 店舗ごとの情報出力
           foreach($per_district_shops[$number-1] as $shop) {

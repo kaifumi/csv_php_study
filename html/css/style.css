@@ -1,11 +1,11 @@
-.area {
+.main {
   width: 60%;
   margin: auto;
   flex-wrap: wrap;
   display: flex;
 }
- 
-.tab_class {
+
+.tab {
   width: calc(100%/8);
   height: 50px;
   background-color: black;
@@ -16,22 +16,19 @@
   display: block;
   float: left;
   order: -1;
+  /* display: none; */
 }
- 
-input[name="tab_name"] {
-  display: none;
-}
- 
-input:checked + .tab_class {
+
+.active {
   background-color: pink;
   color: black;
 }
- 
-.content_class {
+
+.content {
   display: none;
   width: 100%;
 }
- 
-input:checked + .tab_class + .content_class {
+
+.show {
   display: block;
 }
