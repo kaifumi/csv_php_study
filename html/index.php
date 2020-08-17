@@ -11,7 +11,7 @@
   <div class="area">
   <?php
     include('prefecture.php');
-    include('shop.php');
+    include('shop_info.php');
 
     $number = 1;
     $i = 1;
