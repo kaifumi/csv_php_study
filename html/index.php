@@ -19,11 +19,14 @@
       <label class="tab_class" for="tab<?php echo $number; ?>"><?php echo $area ?></label>
       <div class="content_class">
         <?php
+
           // 店舗ごとの情報出力
+
+          $outputs = [2, 5, 6, 8];
           foreach($per_district_shops[$number-1] as $shop) {
               $shop = array_diff($shop, array(""));
-              foreach($shop as $v) {
-                  echo $v . "<br/>";
+              foreach($outputs as $num) {
+                  echo $shop[$num] . "<br/>";
               }
               if ($shop[8] != "") {
                   echo "<a href='" . $shop[8] . "' target='_blank'>MAP</a><br/>";
