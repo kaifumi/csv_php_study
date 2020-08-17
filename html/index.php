@@ -22,15 +22,19 @@
       <input type="radio" name="tab_name" id="tab<?= $number; ?>" <?php if ($number == 1) {echo "checked";} ?> >
       <label class="tab_class" for="tab<?= $number; ?>"><?= $area ?></label>
       <div class="content_class">
-        <?php
-          $output = [2, 5, 6, 8];
+        <a href=""></a>
+        <?
+          // 都道府県ごとのリンクを生成
+          foreach($per_district_records[$number-1] as $record) { ?>
+            <a href="#<?= $record[1]; ?>"><?= $record[0]; ?></a>
+          <? }
 
           // 店舗ごとの情報出力
           foreach($per_district_shops[$number-1] as $shop) {
 
             // 都道府県コードが一致したら表示
             if (array_search($shop[1], $prefecture_num)) { ?>
-              <h1><?= $shop[0]; ?></h1>
+              <h1 id="<?= $shop[1] ?>"><?= $shop[0]; ?></h1>
             <? unset($prefecture_num[$shop[1]]);
             }
 
@@ -38,6 +42,7 @@
             $shop = array_diff($shop, array(""));
 
             // 指定の値のみ出力
+            $output = [2, 5, 6, 8];
             foreach($output as $num) {
               echo $shop[$num] . "<br/>";
             }
