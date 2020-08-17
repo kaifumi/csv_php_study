@@ -1,23 +1,21 @@
-document.addEventListener('DOMContentLoaded', () => {
-  const tabTriggers = document.querySelectorAll('.tab');
-  const tabTargets = document.querySelectorAll('.content');
+document.addEventListener('DOMContentLoaded', function(){
+  const tabs = document.getElementsByClassName("tab");
+  tabsAry = Array.prototype.slice.call(tabs);
 
-  for (let i = 0; i < tabTriggers.length; i++) {
-      tabTriggers[i].addEventListener('click', (e) => {
-          let currentMenu = e.currentTarget;
-          let currentContent = document.getElementById(currentMenu.dataset.id);
+  // タブ切り替えメソッド
+  function tabSwitch() {
+    // tabの選択状態切り替え
+    document.getElementsByClassName("active")[0].classList.remove("active");
+    this.classList.add("active");
 
-          for (let i = 0; i < tabTriggers.length; i++) {
-              tabTriggers[i].classList.remove('active');
-          }
-          currentMenu.classList.add('active');
-
-          for (let i = 0; i < tabTargets.length; i++) {
-              tabTargets[i].classList.remove('show');
-          }
-          if(currentContent !== null) {
-              currentContent.classList.add('show');
-          }
-      });
+    // contentの表示切り替え
+    document.getElementsByClassName("show")[0].classList.remove("show");
+    const index = tabsAry.indexOf(this);
+    document.getElementsByClassName("content")[index].classList.add("show");
   }
+
+  tabsAry.forEach(function(value) {
+    // console.log(value);
+    value.addEventListener("click", tabSwitch);
+  });
 });

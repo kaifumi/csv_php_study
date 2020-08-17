@@ -19,21 +19,23 @@
     $prefecture_num = range(0, 47); ?>
 
     <ul class="tab-group">
-        <? foreach($areas as $v) { ?>
+        <? foreach($areas as $v) : ?>
           <li class="tab tab<?= array_search($v, $areas); if (array_search($v, $areas) == 0) {echo " active";} ?>"><?= $v; ?></li>
-        <? } ?>
+        <? endforeach; ?>
     </ul>
+
     <!-- 地域区分ごとに表示 -->
-    <? foreach($areas as $area) { ?>
+    <? foreach($areas as $area) : ?>
+      <!-- 他の地域は表示しない -->
       <div class="content content<?= array_search($area, $areas); if (array_search($area, $areas) == 0) {echo " show";} ?>">
 
         <!-- 都道府県ごとのリンクを生成 -->
-        <? foreach($per_district_records[$number-1] as $record) { ?>
+        <? foreach($per_district_records[$number-1] as $record) : ?>
             <a href="#<?= $record[1]; ?>"><?= $record[0]; ?></a>
-        <? }
+        <? endforeach;
 
           // 店舗ごとの情報出力
-          foreach($per_district_shops[$number-1] as $shop) {
+          foreach($per_district_shops[$number-1] as $shop) :
 
             // 都道府県コードが一致したら表示
             if (array_search($shop[1], $prefecture_num)) { ?>
@@ -44,7 +46,7 @@
             // 値が空白の部分を取り除く
             $shop = array_diff($shop, array(""));
 
-            // 指定の値のみ出力
+            // 店舗情報　指定の値のみ出力
             $output = [2, 5, 6, 8];
             foreach($output as $num) {
               echo $shop[$num] . "<br/>";
@@ -52,14 +54,13 @@
 
             // 地図情報があれば表示
             if ($shop[8] != "") {
-                echo "<a href='" . $shop[8] . "' target='_blank'>MAP</a><br/>";
+              echo "<a href='" . $shop[8] . "' target='_blank'>MAP</a><br/>";
             } ?>
             <p>--------------------</p>
-          <? } ?>
+          <? endforeach; ?>
       </div>
       <? $number++;
-      // next($areas);
-    } ?>
+    endforeach; ?>
   </div>
 </body>
 </html>

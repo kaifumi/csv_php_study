@@ -1,21 +1,23 @@
-document.addEventListener('DOMContentLoaded', function(){
-  const tabs = document.getElementsByClassName("tab");
-  console.log(tabs);
-  tabsAry = Array.prototype.slice.call(tabs);
-  console.log(tabsAry);
+document.addEventListener('DOMContentLoaded', () => {
+  const tabTriggers = document.querySelectorAll('.tab');
+  const tabTargets = document.querySelectorAll('.content');
 
-  function tabSwitch() {
-    document.getElementsByClassName("active")[0].classList.remove("active");
-    this.classList.add("active");
+  for (let i = 0; i < tabTriggers.length; i++) {
+      tabTriggers[i].addEventListener('click', (e) => {
+          let currentMenu = e.currentTarget;
+          let currentContent = document.getElementById(currentMenu.dataset.id);
 
-    document.getElementsByClassName("show")[0].classList.remove("show");
-    const index = tabsAry.indexOf(this);
+          for (let i = 0; i < tabTriggers.length; i++) {
+              tabTriggers[i].classList.remove('active');
+          }
+          currentMenu.classList.add('active');
 
-    document.getElementsByClassName("content")[index].classList.add("show");
+          for (let i = 0; i < tabTargets.length; i++) {
+              tabTargets[i].classList.remove('show');
+          }
+          if(currentContent !== null) {
+              currentContent.classList.add('show');
+          }
+      });
   }
-
-  tabsAry.forEach(function(value) {
-    // console.log(value);
-    value.addEventListener("click", tabSwitch);
-  });
 });
