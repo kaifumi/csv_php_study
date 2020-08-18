@@ -28,5 +28,4 @@ $area = [range(0, 7), range(7, 14), range(14, 20), range(20, 24), range(24, 30),
 foreach($area as $v) {
     $per_district_shops[] = shop_prefecture_array($shop_records,$v);
 }
-echo "aa";
 ?>
