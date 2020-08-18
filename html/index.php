@@ -20,7 +20,7 @@
       <div><?= $area; ?>
         <?
           foreach($per_district_records[$number] as $record) { ?>
-            <a href="shop_list.php#<?= $record[1]; ?>"><?= $record[0]; ?></a>
+            <a href="shop_list.php#prefecture<?= $record[1]; ?>"><?= $record[0]; ?></a>
           <? }
           $number++; ?>
       </div>

@@ -8,6 +8,16 @@
     <link rel="stylesheet" href="css/style.css">
     <script type="text/javascript" src="js/shop_list.js"></script>
     <script src="js/jquery-3.5.1.min.js"></script>
+    <script>
+      document.write("<div>location.hrefは「" + location.href + "」</div>");
+      document.write("<div>location.protocolは「" + location.protocol + "」</div>");
+      document.write("<div>location.hostnameは「" + location.hostname + "」</div>");
+      document.write("<div>location.hostは「" + location.host + "」</div>");
+      document.write("<div>location.portは「" + location.port + "」</div>");
+      document.write("<div>location.pathnameは「" + location.pathname + "」</div>");
+      document.write("<div>location.searchは「" + location.search + "」</div>");
+      document.write("<div>location.hashは「" + location.hash + "」</div>");
+    </script>
 </head>
 <body>
   <div class="main">
@@ -32,7 +42,7 @@
 
         <!-- 都道府県ごとのリンクを生成 -->
         <? foreach($per_district_records[$number-1] as $record) : ?>
-            <a href="#<?= $record[1]; ?>"><?= $record[0]; ?></a>
+            <a href="#prefecture<?= $record[1]; ?>"><?= $record[0]; ?></a>
         <? endforeach;
 
           // 店舗ごとの情報出力
@@ -40,7 +50,7 @@
 
             // 都道府県コードが一致したら表示
             if (array_search($shop[1], $prefecture_num)) { ?>
-              <h1 id="<?= $shop[1] ?>"><?= $shop[0]; ?></h1>
+              <h1 id="prefecture<?= $shop[1] ?>"><?= $shop[0]; ?></h1>
             <? unset($prefecture_num[$shop[1]]);
             }
 
