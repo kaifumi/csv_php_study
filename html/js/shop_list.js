@@ -1,3 +1,5 @@
+require 
+
 // クリック時にタブ切り替えメソッド実行
 document.addEventListener('DOMContentLoaded', function(){
   // tabを持つ要素の配列を用意
@@ -63,12 +65,4 @@ document.addEventListener('DOMContentLoaded', function(){
     document.getElementsByClassName("tab")[0].classList.add("active");
     document.getElementsByClassName("show")[0].classList.add("show");
   }
-});
-
-$(document).ready(function(){
-  $("#sample1").click(function(){
-    $("#sample2").hide();
-    $(this).css('color', 'red');
-    console.log("test");
-  });
 });
