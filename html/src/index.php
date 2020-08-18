@@ -5,8 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>TOP</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="css/style.css">
-    <script type="text/javascript" src="js/index.js"></script>
+    <link rel="stylesheet" href="../css/style.css">
+    <script type="text/javascript" src="../js/index.js"></script>
 </head>
 <body>
   <h1>TOPページ</h1>
@@ -20,7 +20,7 @@
       <div><?= $area; ?>
         <?
           foreach($per_district_records[$number] as $record) { ?>
-            <a href="shop_list.php#tab<?= array_search($area, $areas) ?>#prefecture<?= $record[1]; ?>"><?= $record[0]; ?></a>
+            <a href="src/shop_list.php#tab<?= array_search($area, $areas) ?>#prefecture<?= $record[1]; ?>"><?= $record[0]; ?></a>
           <? }
           $number++; ?>
       </div>
