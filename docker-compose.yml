@@ -3,10 +3,10 @@ version: '3'
 services:
   php:
     image: php:7.4-apache
+    working_dir: "/usr/"
     volumes:
       - ./php.ini:/usr/local/etc/php/php.ini
-      # - ./$html:/var/www/html
-      - ./:/var/www
+      - ./html:/var/www/html
     ports:
       - 8080:80
   mysql:

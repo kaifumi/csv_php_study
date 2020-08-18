@@ -1,5 +1,5 @@
 <?php
-$PREFCTUR_FILEPATH = "../csv/prefecture_list.csv";
+$PREFCTUR_FILEPATH = "csv/prefecture_list.csv";
 
 // csvファイルを読み込み
 

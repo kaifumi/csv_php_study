@@ -1,5 +1,5 @@
 <?php
-$SHOP_FILEPATH = "../csv/shop_list.csv";
+$SHOP_FILEPATH = "csv/shop_list.csv";
 
 // csvファイルを読み込み
 

@@ -42,7 +42,7 @@
 
         <!-- 都道府県ごとのリンクを生成 -->
         <? foreach($per_district_records[$number-1] as $record) : ?>
-            <a href="#prefecture<?= $record[1]; ?>"><?= $record[0]; ?></a>
+            <a href="#tab<?= array_search($area, $areas) ?>#prefecture<?= $record[1]; ?>"><?= $record[0]; ?></a>
         <? endforeach;
 
           // 店舗ごとの情報出力
@@ -50,7 +50,7 @@
 
             // 都道府県コードが一致したら表示
             if (array_search($shop[1], $prefecture_num)) { ?>
-              <h1 id="prefecture<?= $shop[1] ?>"><?= $shop[0]; ?></h1>
+              <h1 id="tab<?= array_search($area, $areas) ?>#prefecture<?= $shop[1] ?>"><?= $shop[0]; ?></h1>
             <? unset($prefecture_num[$shop[1]]);
             }
 
