@@ -1,6 +1,7 @@
 # ルートディレクトリの変更
 DirectoryIndex src/index.php
 
+# csvとhtaccessファイルへのアクセスをできないようにする
 <Files ~ "\.(csv|htaccess)$">
   deny from all
 </Files>
