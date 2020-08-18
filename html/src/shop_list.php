@@ -6,10 +6,12 @@
     <title>shop_list</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="../css/style.css">
+    <script src="../js/jquery-3.5.1.min.js"></script>
     <script type="text/javascript" src="../js/shop_list.js"></script>
-    <script src="js/jquery-3.5.1.min.js"></script>
 </head>
 <body>
+  <p id="sample1">sample1</p>
+  <p id="sample2">sample2</p>
   <div class="main">
   <?php
     include('prefecture.php');
