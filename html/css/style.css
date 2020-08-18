@@ -4,6 +4,10 @@
   flex-wrap: wrap;
   display: flex;
 }
+.tab-group{
+  width:100%;
+  display: block;
+}
 
 .tab {
   width: calc(100%/8);
