@@ -1,5 +1,3 @@
-require 
-
 // クリック時にタブ切り替えメソッド実行
 document.addEventListener('DOMContentLoaded', function(){
   // tabを持つ要素の配列を用意
