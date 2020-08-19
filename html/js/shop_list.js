@@ -40,10 +40,7 @@ document.addEventListener('DOMContentLoaded', function(){
       for (let i=0; i < tabsAry.length; i++) {
         document.getElementsByClassName("tab")[i].classList.remove("active");
       }
-      let number = hash.slice(4, 6);
-      if (number.includes('#')) {
-        number = hash.slice(4, 5)
-      }
+      let number = hash.slice(4, 5);
       // 該当するtabにactiveをつける
       document.getElementsByClassName("tab")[number].classList.add("active");
 
