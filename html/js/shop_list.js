@@ -50,14 +50,6 @@ document.addEventListener('DOMContentLoaded', function(){
       }
       // 該当するcontentにshowをつける
       document.getElementsByClassName("content")[number].classList.add("show");
-    } else {
-      // hashが#tab~じゃなければ1番目のタブにactiveを与える
-      document.getElementsByClassName("tab")[0].classList.add("active");
-      document.getElementsByClassName("show")[0].classList.add("show");
     }
-  } else {
-    // hashが無かったら1番目のタブにactiveを与える
-    document.getElementsByClassName("tab")[0].classList.add("active");
-    document.getElementsByClassName("show")[0].classList.add("show");
   }
 });
